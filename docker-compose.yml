@@ -1,0 +1,20 @@
+services:
+  server:
+    restart: always
+    build: server
+    ports:
+      - 8080:8080
+    networks:
+      - chatApp
+  client:
+    restart: always
+    depends_on: 
+      - server
+    build: client
+    ports:
+      - 80:80
+    networks:
+      - chatApp
+
+networks:
+  chatApp:
