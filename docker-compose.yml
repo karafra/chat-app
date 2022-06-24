@@ -1,4 +1,4 @@
-name: chatApp
+version: "3.9"
 
 services:
   server:
@@ -20,3 +20,5 @@ services:
 
 networks:
   chatApp:
+    name: chat-app
+    
