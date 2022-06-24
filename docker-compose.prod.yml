@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  server:
+    restart: always
+    build:
+      context: server
+      args: 
+        VERSION: $GITHUB_RUN_NUMBER
+    ports:
+      - 8080:8080
+    networks:
+      - chatApp
+  client:
+    restart: always
+    depends_on: 
+      - server
+    build:
+      context: client
+      args:
+        VERSION: $GITHUB_RUN_NUMBER
+    ports:
+      - 80:80
+    networks:
+      - chatApp
+
+networks:
+  chatApp:
+    name: chat-app
+    
